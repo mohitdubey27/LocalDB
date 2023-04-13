@@ -30,7 +30,6 @@ export const createTable = async () => {
         `SELECT name FROM sqlite_master WHERE type='table' AND name='${tableName}'`,
         [],
         (tx, result) => {
-          console.log('item:', result?.rows.length);
           if (result?.rows?.length === 0) {
             txn.executeSql(`DROP TABLE IF EXISTS ${tableName}`, []);
             txn.executeSql(
